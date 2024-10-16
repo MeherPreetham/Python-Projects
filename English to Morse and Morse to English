@@ -1,0 +1,50 @@
+#regular language to morse
+eng_morse = {
+    'a': '._', 'b': '_...', 'c': '_._.', 'd': '_..', 'e': '.', 'f': '.._.', 'g': '__.', 'h': '....',
+    'i': '..', 'j': '.___', 'k': '_._', 'l': '._..', 'm': '__', 'n': '_.', 'o': '___', 'p': '.__.',
+    'q': '__._', 'r': '._.', 's': '...', 't': '_', 'u': '.._', 'v': '..._', 'w': '.__', 'x': '_.._',
+    'y': '_.__', 'z': '__..',
+    '0': '_____', '1': '.____', '2': '..___', '3': '...__', '4': '...._', '5': '.....',
+    '6': '_....', '7': '__...', '8': '___..', '9': '____.', ' ': ' ', '/': ' '
+}
+
+morse_eng = {
+    '._': 'a', '_...': 'b', '_._.': 'c', '_..': 'd', '.': 'e', '.._.': 'f', '__.': 'g', '....': 'h',
+    '..': 'i', '.___': 'j', '_._': 'k', '._..': 'l', '__': 'm', '_.': 'n', '___': 'o', '.__.': 'p',
+    '__._': 'q', '._.': 'r', '...': 's', '_': 't', '.._': 'u', '..._': 'v', '.__': 'w', '_.._': 'x',
+    '_.__': 'y', '__..': 'z',
+    '_____': '0', '.____': '1', '..___': '2', '...__': '3', '...._': '4', '.....': '5',
+    '_....': '6', '__...': '7', '___..': '8', '____.': '9', '/': ' ', ' ': ' '
+}
+
+#method to convert the characters into morse
+def ch(sentence):
+    arr = list(sentence)
+    for i in range (0, len(arr)):
+        if arr[i] in eng_morse:
+            temp = arr[i]
+            arr[i] = eng_morse[temp]
+    morse_sentence = ' '.join(arr)
+    print(morse_sentence)
+
+def mo(morse):
+    arr = morse.split()
+    print(arr)
+    for i in range (0, len(arr)):
+        if arr[i] in morse_eng:
+            temp = arr[i]
+            arr[i] = morse_eng[temp]
+    eng_sentence = ''.join(arr)
+    print(eng_sentence)
+
+
+
+#main method    
+choice = int(input("Enter 1 for English to morse and 2 for Morse to English: "))
+if choice == 1:
+    sen = input("Enter a sentence to be converted into Morse: ")
+    lower_sen = sen.lower()
+    Morse_text = ch(lower_sen)
+elif choice == 2:
+    morse_sen = input("Enter the morse code you want to translate: ")
+    eng_text = mo(morse_sen)
